@@ -1,6 +1,5 @@
-# CampusConnect Sprint 1 Security Starter (Corrected)
+# CampusConnect Sprint 1 (Security)
 
-This version follows the **first 7 security PBIs from the PBIList sheet**.
 
 ## Covered PBIs
 1. Security | Administrator Login
@@ -11,10 +10,6 @@ This version follows the **first 7 security PBIs from the PBIList sheet**.
 6. Security | Edit Account
 7. Security | Reset Password
 
-## Notes
-- The Sprint 1 sheet and the master PBIList do not fully match.
-- This implementation follows **PBIList**, because that is where the first 7 backlog items appear.
-- Forgot-password email flow is included because it is required to reach Reset Password cleanly in the UI.
 
 ## Stack
 - Frontend: React
