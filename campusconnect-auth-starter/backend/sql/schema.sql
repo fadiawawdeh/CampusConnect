@@ -36,3 +36,14 @@ VALUES (
   1
 )
 ON DUPLICATE KEY UPDATE email = email;
+
+-- Epic 4: Request Event Equipment
+CREATE TABLE IF NOT EXISTS equipment_requests (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  reservation_id INT NOT NULL,
+  projector TINYINT(1) NOT NULL DEFAULT 0,
+  microphone TINYINT(1) NOT NULL DEFAULT 0,
+  extra_chairs_count INT NOT NULL DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
