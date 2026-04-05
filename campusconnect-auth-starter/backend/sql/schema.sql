@@ -47,3 +47,30 @@ CREATE TABLE IF NOT EXISTS equipment_requests (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+-- Epic 2: Venue Management
+CREATE TABLE IF NOT EXISTS venues (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(150) NOT NULL,
+  location VARCHAR(150) NOT NULL,
+  capacity INT NOT NULL,
+  type ENUM('auditorium', 'lab', 'sports_hall', 'study_room', 'other') NOT NULL DEFAULT 'other',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Epic 3: Reservation Management (Event Booking)
+CREATE TABLE IF NOT EXISTS reservations (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  venue_id INT NOT NULL,
+  event_name VARCHAR(200) NOT NULL,
+  reservation_date DATE NOT NULL,
+  start_time TIME NOT NULL,
+  end_time TIME NOT NULL,
+  status ENUM('upcoming', 'cancelled', 'completed', 'pending_approval') NOT NULL DEFAULT 'upcoming',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (venue_id) REFERENCES venues(id) ON DELETE CASCADE
+);
