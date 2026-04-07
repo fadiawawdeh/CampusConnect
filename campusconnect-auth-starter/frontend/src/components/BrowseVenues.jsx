@@ -16,15 +16,12 @@ function BrowseVenues() {
   const bookedSlots = ["10:00", "13:00"];
 
   useEffect(() => {
-  const fakeVenues = [
-    { id: 1, name: "Hall A", location: "Building 1", capacity: 50 },
-    { id: 2, name: "Room B", location: "Building 2", capacity: 30 },
-  ];
-
-  setVenues(fakeVenues);
+  fetch("http://localhost:5000/api/venues")
+    .then(res => res.json())
+    .then(data => setVenues(data));
 }, []);
 
-  
+
 
   return (
   <div className="browse-container">
